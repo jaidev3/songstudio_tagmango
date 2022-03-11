@@ -14,28 +14,35 @@ function SongApp() {
     setSongurl(e);
   };
 
-  useEffect(() => {
-    fetchdata();
-  }, []);
+  useEffect(() => {fetchdata()}, []);
 
+/////////fetching data/////////
   const fetchdata = async () => {
     let data = await axios(
       "https://s3-ap-southeast-1.amazonaws.com/he-public-data/studiod9c0baf.json"
     );
     setSongdata(data.data);
   };
+
+//   search input handling function //
   const handleInput = (e) => {
     setForm(e.target.value);
   };
-  console.log(songdata);
+ // console.log(songdata);
   return (
     <>
       <Navbar />
 
       <Wrapper>
         <div>
-          <Input onChange={handleInput} name="song" placeholder="search songs" />
+          <Input
+            onChange={handleInput}
+            name="song"
+            placeholder="search songs"
+          />
         </div>
+
+        {/* song list and filter with input */}
         <div className="songlist">
           {songdata
             .filter((e) => {
@@ -49,6 +56,7 @@ function SongApp() {
             ))}
         </div>
       </Wrapper>
+      
       {/* audio player */}
       <ReactPlayer
         url={songurl}
@@ -82,8 +90,8 @@ const Wrapper = styled.div`
     justify-content: center;
   }
 `;
-const Input =styled.input`
-border-radius: 15px;
-width: 400px;
-height: 30px;
-`
+const Input = styled.input`
+  border-radius: 15px;
+  width: 400px;
+  height: 30px;
+`;

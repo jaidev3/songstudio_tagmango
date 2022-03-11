@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   width: 300px;
   height: 270px;
   border-radius: 5px;
-  background-color: #EEEDDE;
+  background-color: #eeedde;
   margin-top: 10px;
   h3 {
     margin: 0;
@@ -41,11 +41,10 @@ const Img = styled.img`
   border-radius: 5px;
 `;
 
-const Button=styled.button`
-width: 50%;
-border-radius: 15px;
-background-color: #203239;
-color: white;
-margin: auto;
-
-`
+const Button = styled.button`
+  width: 50%;
+  border-radius: 15px;
+  background-color: #203239;
+  color: white;
+  margin: auto;
+`;
