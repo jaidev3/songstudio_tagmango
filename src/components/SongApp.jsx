@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import SongCards from "./SongCards";
 import Navbar from "./Navbar";
@@ -9,14 +10,14 @@ import ReactPlayer from "react-player";
 function SongApp() {
   const [form, setForm] = useState("");
   const [songdata, setSongdata] = useState([]);
-  const [songurl, setSongurl] = useState("");
-  const getUrl = (e) => {
-    setSongurl(e);
-  };
 
-  useEffect(() => {fetchdata()}, []);
+  const urlData = useSelector((state) => state.song);
 
-/////////fetching data/////////
+  useEffect(() => {
+    fetchdata();
+  }, []);
+
+  /////////fetching data/////////
   const fetchdata = async () => {
     let data = await axios(
       "https://s3-ap-southeast-1.amazonaws.com/he-public-data/studiod9c0baf.json"
@@ -24,11 +25,11 @@ function SongApp() {
     setSongdata(data.data);
   };
 
-//   search input handling function //
+  //   search input handling function //
   const handleInput = (e) => {
     setForm(e.target.value);
   };
- // console.log(songdata);
+  // console.log(songdata);
   return (
     <>
       <Navbar />
@@ -52,14 +53,14 @@ function SongApp() {
               }
             })
             .map((e, i) => (
-              <SongCards value={e} url={getUrl} />
+              <SongCards value={e} />
             ))}
         </div>
       </Wrapper>
-      
+
       {/* audio player */}
       <ReactPlayer
-        url={songurl}
+        url={urlData}
         width="100%"
         height="100px"
         controls={true}

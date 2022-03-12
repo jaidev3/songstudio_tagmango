@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { playSong } from "../ReduxStore/action";
 
-function SongCards({ value, url }) {
+function SongCards({ value }) {
   console.log(value.url);
   const handlePlay = (e) => {
-    url(e);
+    dispatch(playSong(e));
   };
+  const dispatch = useDispatch();
   return (
     <>
       <Wrapper>
