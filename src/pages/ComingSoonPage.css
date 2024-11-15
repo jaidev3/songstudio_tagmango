@@ -1,0 +1,233 @@
+.coming-soon-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  animation: slideUp 1s ease-in-out 0.5s forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.music-note-animation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.note1,
+.note2,
+.headphones {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.note1 {
+  font-size: 3rem;
+  top: 20%;
+  left: 20%;
+  animation: float 3s ease-in-out infinite;
+}
+
+.note2 {
+  font-size: 2.5rem;
+  top: 30%;
+  right: 25%;
+  animation: float 4s ease-in-out infinite 1s;
+}
+
+.headphones {
+  font-size: 4rem;
+  bottom: 20%;
+  left: 50%;
+  /* transform: translateX(-50%); */
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.pulse-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.go-back-button {
+  padding: 12px 24px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.go-back-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: all 0.5s ease;
+}
+
+.go-back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.go-back-button:hover::before {
+  left: 100%;
+}
+
+.go-back-button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .note1 {
+    font-size: 2rem;
+    top: 10%;
+    left: 10%;
+  }
+
+  .note2 {
+    font-size: 1.5rem;
+    top: 20%;
+    right: 15%;
+  }
+
+  .headphones {
+    font-size: 3rem;
+    bottom: 15%;
+  }
+
+  .pulse-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .go-back-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .note1 {
+    font-size: 1.5rem;
+    top: 5%;
+    left: 5%;
+  }
+
+  .note2 {
+    font-size: 1.2rem;
+    top: 15%;
+    right: 10%;
+  }
+
+  .headphones {
+    font-size: 2.5rem;
+    bottom: 10%;
+  }
+
+  .pulse-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .go-back-button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}

@@ -5,7 +5,7 @@
   height: auto;
   min-height: 320px;
   border-radius: 12px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   padding: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
@@ -18,7 +18,7 @@
 .song-card h3 {
   margin: 12px 0 8px 0;
   font-size: 1.1rem;
-  color: #2c3e50;
+  color: #b9c8d7;
 }
 
 .song-card h5 {

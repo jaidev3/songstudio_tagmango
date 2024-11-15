@@ -22,24 +22,18 @@ function SongApp() {
   return (
     <>
       <div className="song-app">
-        <div className="songlist">
+        <div className="song-app-content-pagination">
           {currentSongs.map((song, index) => (
             <SongCards key={index} song={song} />
           ))}
         </div>
-
         <div className="pagination">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
-            <button
-              key={pageNumber}
-              onClick={() => handlePageChange(pageNumber)}
-              className={currentPage === pageNumber ? "active" : ""}
-            >
+            <button key={pageNumber} onClick={() => handlePageChange(pageNumber)} className={currentPage === pageNumber ? "active" : ""}>
               {pageNumber}
             </button>
           ))}
         </div>
-        <MusicPlayer />
       </div>
     </>
   );

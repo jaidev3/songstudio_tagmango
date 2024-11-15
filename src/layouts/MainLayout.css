@@ -1,0 +1,60 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #010101;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.content-wrapper {
+  display: flex;
+  margin-top: 70px; /* Height of navbar */
+  height: calc(100vh - 70px); /* Full height minus navbar */
+  border-radius: 10px;
+}
+
+.navbar-sidebar {
+  position: fixed;
+  left: 0;
+  height: calc(100vh - 175px);
+  overflow: hidden;
+  z-index: 90;
+}
+
+.song-app-container {
+  position: fixed;
+  top: 70px; /* Height of navbar */
+  left: 300px; /* Width of sidebar */
+  right: 10px;
+  bottom: 110px; /* Space for music player */
+  overflow-y: auto;
+  border-radius: 10px;
+}
+
+.music-player-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  .song-app-container {
+    left: 0;
+    top: 80px;
+  }
+
+  .navbar-sidebar {
+    display: none; /* Hide sidebar on mobile */
+  }
+}

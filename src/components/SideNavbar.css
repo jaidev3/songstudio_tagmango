@@ -2,32 +2,16 @@
   background-color: #1b1a1a;
   color: white;
   width: 260px;
-  height: 100vh;
+  height: calc(100vh - 230px);
   padding: 24px;
+  margin: 6px;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
 }
 
 .section {
   margin-bottom: 32px;
-}
-.app-name {
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  font-family: "Arial", sans-serif;
-  transition: transform 0.3s ease;
-}
-
-.app-name:hover {
-  transform: scale(1.05);
 }
 
 .section-title {
@@ -67,6 +51,17 @@
 }
 
 .menu-item span {
-  font-size: 13px;
+  /* font-size: 13px; */
   text-transform: uppercase;
+}
+
+.beta-badge {
+  font-size: 8px;
+  color: #fff;
+  background-color: #3799da;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  vertical-align: super;
 }
