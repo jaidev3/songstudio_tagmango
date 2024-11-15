@@ -22,7 +22,6 @@
   color: transparent;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: 2px;
-  /* margin-bottom: 20px; */
   font-family: "Arial", sans-serif;
   transition: transform 0.3s ease;
 }
@@ -36,7 +35,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* max-width: 1200px; */
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
@@ -87,4 +85,77 @@
 
 .theme-icon:hover {
   transform: rotate(45deg);
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar-title {
+    font-size: 18px;
+  }
+
+  .search-input {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    height: 60px;
+  }
+
+  .navbar-content {
+    padding: 0 15px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .search-input {
+    width: 200px;
+    height: 28px;
+  }
+
+  .home-button {
+    padding: 6px 6px;
+    font-size: 14px;
+  }
+
+  .navbar-center {
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    height: 50px;
+  }
+
+  .navbar-content {
+    padding: 0 10px;
+  }
+
+  .navbar-title {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .search-input {
+    width: 150px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  .home-button {
+    padding: 5px 5px;
+    font-size: 12px;
+  }
+
+  .navbar-center {
+    gap: 10px;
+  }
+
+  .theme-icon {
+    font-size: 14px;
+  }
 }
