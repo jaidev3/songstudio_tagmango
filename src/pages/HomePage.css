@@ -1,0 +1,75 @@
+.song-app {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.song-app-content-pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 32px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.pagination button {
+  min-width: 40px;
+  height: 40px;
+  padding: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.pagination button.active {
+  background: #3799da;
+  color: white;
+  border-color: #3799da;
+  transform: scale(1.1);
+}
+
+.pagination button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.pagination button.active:hover {
+  background: #2980b9;
+  transform: scale(1.1) translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .song-app {
+    padding-top: 100px;
+  }
+  
+  .pagination {
+    padding: 12px;
+    gap: 8px;
+  }
+  
+  .pagination button {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+}

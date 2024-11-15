@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { playSong } from "../redux/action";
-import "./SongCards.css";
+import "./SongList.css";
 
-function SongCards({ song }) {
+function SongList({ song }) {
   const handlePlay = (e) => {
     dispatch(playSong(e));
   };
@@ -11,8 +11,8 @@ function SongCards({ song }) {
   const dispatch = useDispatch();
   console.log(song);
   return (
-    <div className="song-card">
-      <img className="cover-image-card" src={song.coverImage} alt="cover_image" />
+    <div className="song-list">
+      <img className="cover-image" src={song.coverImage} alt="cover_image" />
       <h3>{song.song}</h3>
       <h5>{song.artist}</h5>
       <button className="play-button-card" onClick={() => handlePlay(song.url)}>
@@ -22,4 +22,4 @@ function SongCards({ song }) {
   );
 }
 
-export default SongCards;
+export default SongList;

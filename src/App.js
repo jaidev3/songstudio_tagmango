@@ -6,13 +6,14 @@ import DiscoverPage from "./pages/DiscoverPage";
 import CokeStudioPage from "./pages/CokeStudioPage";
 import PodcastPage from "./pages/PodcastPage";
 import MainLayout from "./layouts/MainLayout";
-
+import HomePage from "./pages/HomePage";
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout />,
       children: [
+        { path: "/", element: <HomePage /> },
         { path: "discover", element: <DiscoverPage /> },
         { path: "favourites", element: <FavouritesPage /> },
         { path: "coke-studio", element: <CokeStudioPage /> },
@@ -21,7 +22,7 @@ function App() {
       ],
     },
     {
-      path: "coming-soon",
+      path: "/coming-soon",
       element: <ComingSoonPage />,
     },
     {

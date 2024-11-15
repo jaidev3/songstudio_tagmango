@@ -11,43 +11,51 @@ const Sidebar = () => {
         <div className="section">
           <h2 className="section-title">Browse</h2>
           <ul className="menu-list">
-            <Link to="/discover">
+            <Link to="/discover" style={{ color: "inherit", textDecoration: "none" }}>
               <li className="menu-item">
                 <Search size={20} />
                 <span>Discover</span>
               </li>
             </Link>
-            <li className="menu-item">
-              <Music2 size={20} />
-              <span>Genre</span>
-            </li>
-            <li className="menu-item">
-              <BarChart3 size={20} />
-              <span>Top Charts</span>
-            </li>
-            <li className="menu-item">
-              <Mic2 size={20} />
-              <span>Podcast</span>
-            </li>
+            <Link to="/coming-soon" style={{ color: "inherit", textDecoration: "none" }}>
+              <li className="menu-item">
+                <Music2 size={20} />
+                <span>Genre</span>
+              </li>
+            </Link>
+            <Link to="/coming-soon" style={{ color: "inherit", textDecoration: "none" }}>
+              <li className="menu-item">
+                <BarChart3 size={20} />
+                <span>Top Charts</span>
+              </li>
+            </Link>
+            <Link to="/coming-soon" style={{ color: "inherit", textDecoration: "none" }}>
+              <li className="menu-item">
+                <Mic2 size={20} />
+                <span>Podcast</span>
+              </li>
+            </Link>
           </ul>
         </div>
 
         {/* Library Section */}
         <div className="section">
-          <Link to="/coming-soon">
-            <h2 className="section-title">Library</h2>
-          </Link>
+          <h2 className="section-title">Library</h2>
           <ul className="menu-list">
-            <li className="menu-item">
-              <Star size={20} />
-              <span>Favourites</span>
-            </li>
-            <li className="menu-item">
-              <ListMusic size={20} />
-              <span>
-                Playlist - Coke Studio <span className="beta-badge">Beta</span>
-              </span>
-            </li>
+            <Link to="/coming-soon" style={{ color: "inherit", textDecoration: "none" }}>
+              <li className="menu-item">
+                <Star size={20} />
+                <span>Favourites</span>
+              </li>
+            </Link>
+            <Link to="/coming-soon" style={{ color: "inherit", textDecoration: "none" }}>
+              <li className="menu-item">
+                <ListMusic size={20} />
+                <span>
+                  Playlist - Coke Studio <span className="beta-badge">Beta</span>
+                </span>
+              </li>
+            </Link>
           </ul>
         </div>
       </nav>

@@ -20,9 +20,9 @@ const MainLayout = () => {
             <Outlet />
           </div>
         </div>
-      </div>
-      <div className="music-player-container">
-        <MusicPlayer />
+        <div className="music-player-container">
+          <MusicPlayer />
+        </div>
       </div>
     </>
   );

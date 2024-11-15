@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { MdHomeFilled } from "react-icons/md";
+import { Link } from "react-router-dom";
 function Navbar() {
   const [form, setForm] = useState("");
   const [theme, setTheme] = useState(true);
@@ -17,13 +18,17 @@ function Navbar() {
     <div className="navbar">
       <div className="navbar-content">
         <div className="navbar-left">
-          <h1 className="navbar-title">Sound Studio</h1>
+          <Link to="/">
+            <h1 className="navbar-title">Sound Studio</h1>
+          </Link>
         </div>
 
         <div className="navbar-center">
-          <button className="home-button">
-            <MdHomeFilled size={20} />
-          </button>
+          <Link to="/">
+            <button className="home-button">
+              <MdHomeFilled size={20} />
+            </button>
+          </Link>
           <input className="search-input" onChange={handleInput} name="song" placeholder="What do you want to play?" />
         </div>
 

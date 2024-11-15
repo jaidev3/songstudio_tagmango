@@ -8,7 +8,7 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: #010101;
+  background-color: transparent;
   color: white;
 }
 
@@ -67,6 +67,7 @@
   height: 30px;
   background: #1b1a1a;
   color: white;
+  padding: 0 10px;
 }
 
 .home-button {
