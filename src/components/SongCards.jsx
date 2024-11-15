@@ -1,53 +1,33 @@
 import React from "react";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { playSong } from "../ReduxStore/action";
+import { playSong } from "../redux/action";
+import "./SongCards.css";
 
-function SongCards({ value }) {
-  console.log(value.url);
+function SongCards({ song }) {
   const handlePlay = (e) => {
     dispatch(playSong(e));
   };
+
+  // id: 5,
+  // song: "Heat Waves",
+  // artist: "Glass Animals",
+  // url: "https://www.youtube.com/watch?v=mRD0-GxqHVo",
+  // coverImage: "https://i.scdn.co/image/ab67616d0000b273848f88ec6ec31d9f2d95d2f8",
+  // duration: "3:59",
+  // genre: "Indie Pop",
+  // releaseYear: 2020,
   const dispatch = useDispatch();
+  console.log(song);
   return (
-    <>
-      <Wrapper>
-        <Img src={value.cover_image} alt="cover_image" />
-        <h3>{value.song}</h3>
-        <h5>{value.artists}</h5>
-        <Button onClick={() => handlePlay(value.url)}>play</Button>
-      </Wrapper>
-    </>
+    <div className="song-card">
+      <img className="cover-image" src={song.coverImage} alt="cover_image" />
+      <h3>{song.song}</h3>
+      <h5>{song.artist}</h5>
+      <button className="play-button" onClick={() => handlePlay(song.url)}>
+        play
+      </button>
+    </div>
   );
 }
 
 export default SongCards;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 270px;
-  border-radius: 5px;
-  background-color: #eeedde;
-  margin-top: 10px;
-  h3 {
-    margin: 0;
-  }
-  h5 {
-    margin: 0;
-  }
-`;
-const Img = styled.img`
-  width: 100%;
-  height: 200px;
-  border-radius: 5px;
-`;
-
-const Button = styled.button`
-  width: 50%;
-  border-radius: 15px;
-  background-color: #203239;
-  color: white;
-  margin: auto;
-`;

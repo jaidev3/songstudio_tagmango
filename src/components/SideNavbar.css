@@ -1,0 +1,72 @@
+.sidebar {
+  background-color: #1b1a1a;
+  color: white;
+  width: 260px;
+  height: 100vh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+.app-name {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-family: "Arial", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.app-name:hover {
+  transform: scale(1.05);
+}
+
+.section-title {
+  text-transform: uppercase;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.menu-item:hover {
+  color: #d1d5db;
+}
+
+.menu-item span {
+  font-size: 13px;
+  text-transform: uppercase;
+}
