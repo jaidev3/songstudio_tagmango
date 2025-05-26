@@ -20,17 +20,33 @@ function HomePage() {
 
   return (
     <div className="song-app">
-      <div className="song-app-content-pagination">
-        {currentSongs.map((song, index) => (
-          <SongList key={index} song={song} />
-        ))}
+      <div className="page-header">
+        <h1 className="page-title">Discover Music</h1>
+        <p className="page-subtitle">
+          Explore your favorite tracks and discover new sounds
+        </p>
       </div>
-      <div className="pagination">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
-          <button key={pageNumber} onClick={() => handlePageChange(pageNumber)} className={currentPage === pageNumber ? "active" : ""}>
-            {pageNumber}
-          </button>
-        ))}
+
+      <div className="song-app-content-pagination">
+        <div className="songs-grid">
+          {currentSongs.map((song, index) => (
+            <SongList key={index} song={song} />
+          ))}
+        </div>
+
+        <div className="pagination">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+            (pageNumber) => (
+              <button
+                key={pageNumber}
+                onClick={() => handlePageChange(pageNumber)}
+                className={currentPage === pageNumber ? "active" : ""}
+              >
+                <span>{pageNumber}</span>
+              </button>
+            )
+          )}
+        </div>
       </div>
     </div>
   );

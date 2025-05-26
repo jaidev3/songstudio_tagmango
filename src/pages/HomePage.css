@@ -1,75 +1,275 @@
 .song-app {
   display: flex;
   flex-direction: column;
-  padding: 50px;
+  padding: var(--spacing-2xl);
+  min-height: 100%;
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.song-app::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(102, 126, 234, 0.02) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.page-header {
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 1px;
+}
+
+.page-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin: 0;
 }
 
 .song-app-content-pagination {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
 }
 
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  margin: 32px 0;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50px;
-  backdrop-filter: blur(10px);
+  gap: var(--spacing-sm);
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-2xl);
+  width: fit-content;
+  box-shadow: var(--shadow-lg);
 }
 
 .pagination button {
-  min-width: 40px;
-  height: 40px;
-  padding: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  min-width: 44px;
+  height: 44px;
+  padding: var(--spacing-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: var(--text-secondary);
   cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-normal);
   font-weight: 600;
   font-size: 14px;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.pagination button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  border-radius: var(--radius-xl);
 }
 
 .pagination button.active {
-  background: #3799da;
-  color: white;
-  border-color: #3799da;
-  transform: scale(1.1);
+  background: rgba(102, 126, 234, 0.2);
+  color: var(--text-primary);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(102, 126, 234, 0.2);
 }
 
-.pagination button:hover {
-  background: rgba(255, 255, 255, 0.2);
+.pagination button.active::before {
+  opacity: 0.15;
+}
+
+.pagination button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-md);
 }
 
-.pagination button.active:hover {
-  background: #2980b9;
-  transform: scale(1.1) translateY(-2px);
+.pagination button:hover::before {
+  opacity: 0.05;
+}
+
+.pagination button:active {
+  transform: scale(0.95);
+}
+
+.pagination button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced animations */
+.song-app-content-pagination .song-list:nth-child(odd) {
+  animation: slideIn 0.6s ease-out;
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+}
+
+.song-app-content-pagination .song-list:nth-child(even) {
+  animation: slideIn 0.6s ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+/* Loading state */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(102, 126, 234, 0.1);
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: var(--spacing-md);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-secondary);
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .song-app {
+    padding: var(--spacing-xl);
+  }
+
+  .page-title {
+    font-size: 28px;
+  }
+
+  .page-subtitle {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 768px) {
   .song-app {
-    padding-top: 100px;
+    padding: var(--spacing-lg);
+    padding-top: var(--spacing-2xl);
   }
-  
+
+  .page-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .page-subtitle {
+    font-size: 14px;
+  }
+
   .pagination {
-    padding: 12px;
-    gap: 8px;
+    padding: var(--spacing-md);
+    gap: var(--spacing-xs);
   }
-  
+
+  .pagination button {
+    min-width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .song-app {
+    padding: var(--spacing-md);
+    padding-top: var(--spacing-xl);
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .page-subtitle {
+    font-size: 13px;
+  }
+
+  .pagination {
+    padding: var(--spacing-sm);
+  }
+
   .pagination button {
     min-width: 36px;
     height: 36px;
-    font-size: 13px;
+    font-size: 12px;
   }
 }
