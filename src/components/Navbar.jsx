@@ -1,42 +1,59 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { FaMoon, FaSun } from "react-icons/fa";
-import { MdHomeFilled } from "react-icons/md";
+import { FaMoon, FaSun, FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
-function Navbar() {
-  const [form, setForm] = useState("");
-  const [theme, setTheme] = useState(true);
-  const handleInput = (e) => {
-    setForm(e.target.value);
-  };
+import { useTheme } from "../providers/ThemeProvider";
 
-  const handleTheme = () => {
-    setTheme(!theme);
-  };
+function Navbar() {
+  const { themeName, toggleTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="navbar">
-      <div className="navbar-content">
-        <div className="navbar-left">
-          <Link to="/">
-            <h1 className="navbar-title">Sound Studio</h1>
-          </Link>
-        </div>
-
-        <div className="navbar-center">
-          <Link to="/">
-            <button className="home-button">
-              <MdHomeFilled size={20} />
-            </button>
-          </Link>
-          <input className="search-input" onChange={handleInput} name="song" placeholder="What do you want to play?" />
-        </div>
-
-        <div className="navbar-right" onClick={handleTheme}>
-          {theme ? <FaMoon className="theme-icon" /> : <FaSun className="theme-icon" />}
-        </div>
+    <nav className="navbar">
+      <div className="navbar-left">
+        <button
+          className="navbar-hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Open menu"
+        >
+          <FaBars size={22} />
+        </button>
       </div>
-    </div>
+      <div className="navbar-center">
+        <Link to="/" className="navbar-logo">
+          {/* Replace with logo image if available */}
+          <span>Sound Studio</span>
+        </Link>
+      </div>
+      <div className="navbar-right">
+        <Link to="/login" className="navbar-auth-btn">
+          Login
+        </Link>
+        <Link to="/signup" className="navbar-auth-btn navbar-signup">
+          Sign Up
+        </Link>
+        <button
+          className="navbar-theme-btn"
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          {themeName === "dark" ? <FaSun /> : <FaMoon />}
+        </button>
+      </div>
+      {/* Mobile menu overlay (optional, can be expanded later) */}
+      {menuOpen && (
+        <div className="navbar-mobile-menu">
+          <button
+            className="navbar-mobile-close"
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            &times;
+          </button>
+          {/* Add mobile menu items here if needed */}
+        </div>
+      )}
+    </nav>
   );
 }
 

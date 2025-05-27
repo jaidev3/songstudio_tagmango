@@ -1,27 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
-  /* Color Palette */
-  --primary-bg: #0a0a0a;
-  --secondary-bg: #1a1a1a;
-  --tertiary-bg: #2a2a2a;
-  --card-bg: #1e1e1e;
-  --hover-bg: #2c2c2c;
-  --border-color: #333;
-
-  /* Brand Colors */
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --success-color: #1db954;
-  --success-hover: #1ed760;
-
-  /* Text Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #b3b3b3;
-  --text-muted: #6b7280;
-
-  /* Spacing */
+  /* SPACING (keep these as they are not theme-dependent) */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -29,24 +9,34 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
 
-  /* Border Radius */
+  /* BORDER RADIUS (keep these) */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
 
-  /* Shadows */
+  /* SHADOWS (can be kept or adjusted if they need to change with theme) */
+  /* For now, let's assume they are theme-agnostic or defined in theme.js and applied by ThemeProvider if needed */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3); /* This might need to be theme-dependent */
 
-  /* Transitions */
+  /* TRANSITIONS (keep these) */
   --transition-fast: 0.15s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
+
+  /* Gradients and other specific colors from the old :root that might be globally used */
+  /* These should ideally come from the theme.js via ThemeProvider if they need to switch between light/dark */
+  /* If they are static, they can remain, but it's better to manage them via JS for theming */
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --success-color: #1db954;
+  --success-hover: #1ed760;
 }
 
 * {
@@ -58,12 +48,14 @@
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     sans-serif;
-  background-color: var(--primary-bg);
-  color: var(--text-primary);
+  background-color: var(--primary-bg); /* Will be set by ThemeProvider */
+  color: var(--text-primary); /* Will be set by ThemeProvider */
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal),
+    color var(--transition-normal); /* Smooth theme transition */
 }
 
 /* Scrollbar Styling */
@@ -72,32 +64,42 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--secondary-bg);
+  background: var(--secondary-bg); /* Use theme variable */
   border-radius: var(--radius-md);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--tertiary-bg);
+  background: var(--tertiary-bg); /* Use theme variable */
   border-radius: var(--radius-md);
   transition: background var(--transition-normal);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--hover-bg);
+  background: var(--hover-bg); /* Use theme variable */
 }
 
 /* Custom Utility Classes */
 .gradient-text {
-  background: var(--primary-gradient);
+  background: var(
+    --primary-gradient
+  ); /* This might need to be theme-dependent */
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.05);
+  /* Adjust glassmorphism based on theme if needed, or keep it generic */
+  /* Example: background: var(--glass-bg, rgba(255, 255, 255, 0.05)); */
+  background: rgba(255, 255, 255, 0.05); /* Current dark theme default */
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color); /* Use theme variable */
+}
+
+/* In light theme, glassmorphism might look better with a different base or border */
+body[data-theme="light"] .glassmorphism {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .card-hover {
@@ -106,7 +108,7 @@ body {
 
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-xl); /* This shadow might need theme adjustment */
 }
 
 /* Focus Styles */
@@ -114,6 +116,7 @@ button:focus,
 input:focus,
 select:focus,
 textarea:focus {
+  /* This focus color might need to be theme-dependent */
   outline: 2px solid rgba(102, 126, 234, 0.5);
   outline-offset: 2px;
 }
