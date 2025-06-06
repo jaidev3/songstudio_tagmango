@@ -1,0 +1,119 @@
+.favorites-page {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-2xl);
+  min-height: 100%;
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.page-header {
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.heart-icon {
+  color: #ef4444;
+  font-size: 28px;
+}
+
+.page-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin: 0;
+}
+
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: var(--text-muted);
+  opacity: 0.3;
+  margin-bottom: var(--spacing-lg);
+}
+
+.empty-state h3 {
+  font-size: 24px;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.empty-state p {
+  font-size: 16px;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .favorites-page {
+    padding: var(--spacing-lg);
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .heart-icon {
+    font-size: 20px;
+  }
+
+  .page-subtitle {
+    font-size: 14px;
+  }
+
+  .empty-state {
+    padding: var(--spacing-2xl);
+  }
+
+  .empty-icon {
+    font-size: 48px;
+  }
+
+  .empty-state h3 {
+    font-size: 20px;
+  }
+
+  .empty-state p {
+    font-size: 14px;
+  }
+}

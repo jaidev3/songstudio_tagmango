@@ -16,22 +16,29 @@
 .navbar-left {
   display: flex;
   align-items: center;
+  gap: var(--spacing-md);
 }
 
-.navbar-hamburger {
+.hamburger-menu {
+  display: none;
   background: none;
   border: none;
   color: var(--text-primary);
-  font-size: 22px;
+  font-size: 24px;
   cursor: pointer;
   padding: 8px;
   border-radius: 8px;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
 }
 
-.navbar-hamburger:hover {
-  background: rgba(102, 126, 234, 0.08);
+.hamburger-menu:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
+
+.hamburger-menu:active {
+  transform: scale(0.95);
+}
+
 
 .navbar-center {
   flex: 1;
@@ -41,6 +48,9 @@
 }
 
 .navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -54,35 +64,17 @@
   color: #667eea;
 }
 
+.logo-icon {
+  font-size: 24px;
+  color: #667eea;
+}
+
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.navbar-auth-btn {
-  background: none;
-  border: 1px solid var(--primary-gradient, #667eea);
-  color: var(--text-primary);
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-}
-
-.navbar-auth-btn:hover {
-  background: var(--primary-gradient, #667eea);
-  color: #fff;
-  border-color: #667eea;
-}
-
-.navbar-signup {
-  border-width: 2px;
-  font-weight: 600;
-}
 
 .navbar-theme-btn {
   background: none;
@@ -101,6 +93,12 @@
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+  .hamburger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .navbar {
     height: 56px;
     padding: 0 12px;
@@ -108,43 +106,12 @@
   .navbar-logo {
     font-size: 1.1rem;
   }
-  .navbar-auth-btn {
-    padding: 5px 12px;
-    font-size: 0.95rem;
+  .logo-icon {
+    font-size: 18px;
+  }
+  
+  .navbar-logo span {
+    display: none;
   }
 }
 
-/* Mobile menu overlay (optional, can be expanded later) */
-.navbar-mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(10, 10, 10, 0.96);
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 32px 24px;
-  animation: fadeIn 0.2s;
-}
-
-.navbar-mobile-close {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2.2rem;
-  align-self: flex-end;
-  cursor: pointer;
-  margin-bottom: 32px;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}

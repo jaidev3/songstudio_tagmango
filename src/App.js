@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import "./App.css";
-import ComingSoonPage from "./pages/ComingSoonPage";
 import FavouritesPage from "./pages/FavouritesPage";
-import DiscoverPage from "./pages/DiscoverPage";
-import CokeStudioPage from "./pages/CokeStudioPage";
-import PodcastPage from "./pages/PodcastPage";
 import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
+import AddSongPage from "./pages/AddSongPage";
+import PlaylistsPage from "./pages/PlaylistsPage";
+import PlaylistDetailPage from "./pages/PlaylistDetailPage";
+import ExportImportPage from "./pages/ExportImportPage";
 function App() {
   const router = createBrowserRouter([
     {
@@ -14,16 +14,13 @@ function App() {
       element: <MainLayout />,
       children: [
         { path: "/", element: <HomePage /> },
-        { path: "discover", element: <DiscoverPage /> },
         { path: "favourites", element: <FavouritesPage /> },
-        { path: "coke-studio", element: <CokeStudioPage /> },
-        { path: "podcast", element: <PodcastPage /> },
-        { path: "", element: <Navigate to="/discover" replace /> },
+        { path: "playlists", element: <PlaylistsPage /> },
+        { path: "playlist/:playlistId", element: <PlaylistDetailPage /> },
+        { path: "add-song", element: <AddSongPage /> },
+        { path: "export-import", element: <ExportImportPage /> },
+        { path: "", element: <Navigate to="/" replace /> },
       ],
-    },
-    {
-      path: "/coming-soon",
-      element: <ComingSoonPage />,
     },
     {
       path: "*",
